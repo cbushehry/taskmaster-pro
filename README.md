@@ -3,7 +3,7 @@
 ## 1. Description
 This application makes it easier than ever for the user to keep track of multiple tasks they need to finish.
 
-DEPLOYMENT:
+DEPLOYMENT: https://cbushehry.github.io/taskmaster-pro/
 
 ## 2. Features
  * Users can create tasks with descriptions and due dates

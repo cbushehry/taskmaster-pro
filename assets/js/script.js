@@ -133,7 +133,6 @@ $("#trash").droppable({
   drop: function(event, ui) {
     // remove dragged element from the dom
     ui.draggable.remove();
-
   },
   over: function(event, ui) {
     console.log(ui);
@@ -148,7 +147,6 @@ $("#modalDueDate").datepicker({
   // force user to select a future date
   minDate: 1
 });
-
 
 // modal was triggered
 $("#task-form-modal").on("show.bs.modal", function() {
@@ -240,6 +238,15 @@ $(".list-group").on("click", "span", function() {
     .val(date);
   $(this).replaceWith(dateInput);
 
+  // enable jquery ui date picker
+  dateInput.datepicker({
+    minDate: 1,
+    onClose: function() {
+      // when calendar is closed, force a "change" event
+      $(this).trigger("change");
+    }
+  });
+
   // automatically bring up the calendar
   dateInput.trigger("focus");
 });
@@ -266,6 +273,7 @@ $(".list-group").on("change", "input[type='text']", function() {
     .addClass("badge badge-primary badge-pill")
     .text(date);
     $(this).replaceWith(taskSpan);
+    auditTask($(taskSpan).closest(".list-group-item"));
 });
 
 // remove all tasks
@@ -280,7 +288,3 @@ $("#remove-tasks").on("click", function() {
 
 // load tasks for the first time
 loadTasks();
-
-$("#modalDueDate").datepicker({
-  minDate: 1
-});

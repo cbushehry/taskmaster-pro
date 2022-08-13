@@ -11,6 +11,8 @@ DEPLOYMENT: https://cbushehry.github.io/taskmaster-pro/
  * Task data is persistent, thanks to localStorage
  * 'Delete All' button so the user can quickly delete all tasks
 
+ ![taskmaster homepage](assets/images/taskmaster-image.JPG)
+
 
 ## 3. Credits / Contact Info
 This application was created by Cameron Bushehry

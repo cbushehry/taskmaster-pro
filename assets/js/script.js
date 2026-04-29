@@ -124,12 +124,19 @@ $("#trash").droppable({
   accept: ".card .list-group-item",
   tolerance: "touch",
   drop: function(event, ui) {
-    // remove dragged element from the dom
+    var status = ui.draggable
+      .closest(".list-group")
+      .attr("id")
+      .replace("list-", "");
+    var index = ui.draggable.index();
+
+    tasks[status].splice(index, 1);
+    saveTasks();
+
     ui.draggable.remove();
     $(".bottom-trash").removeClass("bottom-trash-active");
   },
   over: function(event, ui) {
-    console.log(ui);
     $(".bottom-trash").addClass("bottom-trash-active");
   },
   out: function(event, ui) {
@@ -277,7 +284,6 @@ $("#remove-tasks").on("click", function() {
     tasks[key].length = 0;
     $("#list-" + key).empty();
   }
-  console.log(tasks);
   saveTasks();
 });
 
